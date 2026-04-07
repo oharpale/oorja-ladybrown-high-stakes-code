@@ -1,6 +1,7 @@
 #include "main.h"
 #include "drivecode/objects.hpp"
 #include "lemlib/api.hpp"
+#include "drivecode/ladybrown.hpp"
 
 /**
  * A callback function for LLEMU's center button.
@@ -78,10 +79,17 @@ void autonomous() {}
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 pros::MotorGroup leftMotors({0,0,0},pros::MotorGearset::blue);
 pros::MotorGroup rightMotors({0,0,0},pros::MotorGearset::blue);
-pros::MotorGroup ladybrown({0,0},pros::MotorGearset::red);
+
+
 
 void opcontrol() {
     // loop forever
+	pros::Task task_updateLadybrownPID([]{
+        while (true) {
+            updateLadybrownPID();
+            pros::delay(10);
+        }
+    });
     while (true) {
         // get left y and right x positions
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
@@ -90,8 +98,9 @@ void opcontrol() {
         // move the robot
         chassis.arcade(leftY, rightX);
 
-		void updateDoinker();
-
+		updateDoinker();
+		updateLadybrownControls();
+		updateClamp();
 
         // delay to save resources
         pros::delay(10);
