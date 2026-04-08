@@ -13,6 +13,11 @@ int states[numStates] = {0, 30, 180};
 int currentState = states[0];
 int target = states[0];
 
+//Ladybrown scoring delays (to be tuned) in milliseconds
+
+int loadingDelay = 0; //how long the ladybrown stays in loading position
+int scoringDelay = 0; //how long the ladybrown stays in scoring position
+
 //PID variables
 double lb_kP = 0;
 double lb_kD = 0;
@@ -53,6 +58,13 @@ void updateLadybrownPID() {
 
 void updateLadybrownControls() {
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) {
+        target = states[0];
+    }
+    if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
+        target = states[1];
+        pros::delay(loadingDelay)
+        target = states[2];
+        pros::delay(scoringDelay)
         target = states[0];
     }
 }
