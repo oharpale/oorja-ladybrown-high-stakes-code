@@ -62,9 +62,9 @@ void updateLadybrownControls() {
     }
     if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1)) {
         target = states[1];
-        pros::delay(loadingDelay)
+        pros::delay(loadingDelay);
         target = states[2];
-        pros::delay(scoringDelay)
+        pros::delay(scoringDelay);
         target = states[0];
     }
 }

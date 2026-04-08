@@ -2,6 +2,13 @@
 #include "drivecode/objects.hpp"
 #include "lemlib/api.hpp"
 
+/* TEAM ALLIANCE COLOR update before each match
+Red: 0
+Blue: 1
+*/
+
+int myColor = 0;
+
 lemlib::Drivetrain drivetrain(
     &leftMotors,    
     &rightMotors,      

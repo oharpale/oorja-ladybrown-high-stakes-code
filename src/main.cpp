@@ -2,6 +2,7 @@
 #include "drivecode/objects.hpp"
 #include "lemlib/api.hpp"
 #include "drivecode/ladybrown.hpp"
+#include "drivecode/intake.hpp"
 
 /**
  * A callback function for LLEMU's center button.
@@ -84,6 +85,7 @@ pros::MotorGroup rightMotors({0,0,0},pros::MotorGearset::blue);
 
 void opcontrol() {
     // loop forever
+	updateTeam();
 	pros::Task task_updateLadybrownPID([]{
         while (true) {
             updateLadybrownPID();
