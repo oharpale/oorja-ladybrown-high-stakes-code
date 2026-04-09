@@ -66,4 +66,7 @@ void updateLadybrownControls() {
         pros::delay(scoringDelay);
         target = states[0];
     }
+    if (climbBegins == true) {
+        return;
+    }
 }

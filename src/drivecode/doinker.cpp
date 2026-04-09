@@ -10,4 +10,7 @@ void updateDoinker(){
         doinkerExtended = !doinkerExtended;
         doinker.set_value(doinkerExtended);
     }
+    if (climbBegins == true) {
+        return;
+    }
 }

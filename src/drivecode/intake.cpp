@@ -65,10 +65,13 @@ void intakeControls() {
             intakeReverse = !intakeReverse;
         }
     }
+    if (climbBegins == true) {
+        return;
+    }
 }
 
 void redAlliance() {
-    if (hijackDriver = false) {
+    if (hijackDriver == false) {
         potentialRing = opticSensor.get_proximity(); 
 
         if (potentialRing > ringDistance) { //should be tuned to determine when a ring is present in the intake
@@ -99,7 +102,7 @@ void redAlliance() {
 }
 
 void blueAlliance() {
-    if (hijackDriver = false) {
+    if (hijackDriver == false) {
         potentialRing = opticSensor.get_proximity(); 
 
         if (potentialRing > ringDistance) { //should be tuned to determine when a ring is present in the intake

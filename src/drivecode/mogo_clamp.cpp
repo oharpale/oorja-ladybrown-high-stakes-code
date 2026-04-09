@@ -14,4 +14,7 @@ void updateClamp(){
         clampLeft.set_value(clampOn);
         clampRight.set_value(clampOn);
     }
+    if (climbBegins == true) {
+        return;
+    }
 }

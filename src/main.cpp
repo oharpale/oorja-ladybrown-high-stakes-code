@@ -3,6 +3,7 @@
 #include "lemlib/api.hpp"
 #include "drivecode/ladybrown.hpp"
 #include "drivecode/intake.hpp"
+#include "drivecode/tier3.hpp"
 
 /**
  * A callback function for LLEMU's center button.
@@ -104,6 +105,7 @@ void opcontrol() {
 		updateDoinker();
 		updateLadybrownControls();
 		updateClamp();
+        updateTier3();
 
         // delay to save resources
         pros::delay(10);
