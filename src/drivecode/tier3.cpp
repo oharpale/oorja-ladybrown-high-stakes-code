@@ -28,11 +28,16 @@ climbStates currentClimbState = tier1;
 120: to pull for tiers 2 and 3
 */
 
-//expand is positive
+//ANGLES
 int idleClimbAngle = 0;
 int restPassiveHookAngle = 15;
 int pullTier1 = 30;
 int pullTiers23 = 120;
+
+//DELAYS
+int armExtendedDelay = 0; //while arm is extended
+int armRestingDelay = 0; //while arm is resting
+int armContractedDelay = 0; //when the arm has finished contracting after pulling the bot up
 
 int currentTier = 0;
 bool climbBegins = false;
@@ -52,14 +57,14 @@ void startTier3() {
             towersExtended = true;
             armDriveVelocity = 600;
             target = pullTier1;
-            pros::delay(10);
+            pros::delay(armExtendedDelay);
             armDriveVelocity = -600;
             target = idleClimbAngle;
-            pros::delay(10);
+            pros::delay(armContractedDelay);
             towersExtended = false;
             armDriveVelocity = 600;
             target = restPassiveHookAngle;
-            pros::delay(10);
+            pros::delay(armRestingDelay);
             armDriveVelocity = 0;
             currentClimbState = tiers23;
             break;
@@ -69,14 +74,14 @@ void startTier3() {
                 towersExtended = true;
                 armDriveVelocity = 600;
                 target = pullTiers23;
-                pros::delay(10);
+                pros::delay(armExtendedDelay);
                 armDriveVelocity = -600;
                 target = idleClimbAngle;
-                pros::delay(10);
+                pros::delay(armContractedDelay);
                 towersExtended = false;
                 armDriveVelocity = 600;
                 target = restPassiveHookAngle;
-                pros::delay(10);
+                pros::delay(armRestingDelay);
                 armDriveVelocity = 0;
                 currentTier +=1;
             }
