@@ -12,6 +12,7 @@ extern lemlib::Chassis chassis;
 extern pros::Controller controller;
 
 extern int myColor;
+extern bool climbBegins;
 
 void updateClamp();
 void updateDoinker();

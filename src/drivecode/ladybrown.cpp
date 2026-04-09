@@ -10,7 +10,6 @@ pros::Rotation lbRotation(0);
 
 const int numStates = 3;
 int states[numStates] = {0, 30, 180};
-int currentState = states[0];
 int target = states[0];
 
 //Ladybrown scoring delays (to be tuned) in milliseconds

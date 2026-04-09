@@ -31,6 +31,14 @@ void initialize() {
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+	updateTeam(); //this will also initiate the color sort
+
+    pros::Task task_updateLadybrownPID([]{
+        while (true) {
+            updateLadybrownPID();
+            pros::delay(10);
+        }
+    });
 }
 
 /**
@@ -85,13 +93,6 @@ pros::MotorGroup rightMotors({0,0,0},pros::MotorGearset::blue);
 
 void opcontrol() {
     // loop forever
-	updateTeam();
-	pros::Task task_updateLadybrownPID([]{
-        while (true) {
-            updateLadybrownPID();
-            pros::delay(10);
-        }
-    });
     while (true) {
         // get left y and right x positions
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);

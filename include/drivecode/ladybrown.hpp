@@ -5,3 +5,5 @@ extern pros::MotorGroup ladybrown;
 
 void updateLadybrownControls();
 void updateLadybrownPID();
+
+extern int target;
